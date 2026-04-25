@@ -2,30 +2,3 @@
 node_modules/
 npm-debug.log*
 
-# Environment variables
-.env
-
-# Logs
-logs
-*.log
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# Build
-dist/
-build/
-
-# Vite
-.vite/
-
-# Uploads (VERY IMPORTANT)
-uploads/
-server/uploads/
-
-# VS Code
-.vscode/
-
-# Mac
-.DS_Store
