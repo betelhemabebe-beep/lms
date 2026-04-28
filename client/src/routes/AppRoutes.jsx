@@ -13,6 +13,7 @@ import InstructorAssignmentsPage from "../pages/InstructorAssignmentsPage"
 import InstructorAssignmentPage from "../pages/InstructorAssignmentPage"
 import StudentGradesPage from "../pages/StudentGradesPage"
 import FileViewerPage from "../pages/FileViewerPage"
+import CalendarPage from "../pages/CalendarPage";
 
 function AppRoutes() {
   return (
@@ -31,6 +32,7 @@ function AppRoutes() {
       <Route path="/assignment/:assignmentId" element={<StudentAssignmentPage />} />
       <Route path="/instructor/assignment/:assignmentId" element={<InstructorAssignmentPage />} />
       <Route path="/file-viewer" element={<FileViewerPage />} />
+      <Route path="/calendar" element={<CalendarPage />} />
     </Routes>
   )
 }
