@@ -68,8 +68,14 @@ function StudentAssignmentPage() {
         assignmentId,
         file: fileUrl
       })
-
+      
       setSubmission(res.data)
+      
+      if (res.data?._id) {
+        const aiRes = await API.post(`/ai-grader/submission/${res.data._id}`)
+        setSubmission(aiRes.data.submission)
+      }
+      
       setSubmissionFile(null)
     } catch (err) {
       setError(err.response?.data?.message || "Could not submit assignment")
@@ -241,6 +247,24 @@ function StudentAssignmentPage() {
               <h2 className="info-card-title">Teacher Feedback</h2>
               <p className="feedback-text">{submission?.feedback || "No feedback yet."}</p>
             </div>
+
+            <div className="info-card">
+  <h2 className="info-card-title">AI Grader Suggestion</h2>
+
+  <p className="feedback-text">
+    <strong>Status:</strong> {submission?.aiStatus || "Not Started"}
+  </p>
+
+  <p className="feedback-text">
+    <strong>Suggested Grade:</strong>{" "}
+    {submission?.aiGrade || "Not available yet"}
+  </p>
+
+  <p className="feedback-text">
+    <strong>AI Feedback:</strong>{" "}
+    {submission?.aiFeedback || "No AI feedback yet."}
+  </p>
+</div>
           </div>
         </div>
       </div>

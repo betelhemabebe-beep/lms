@@ -32,6 +32,19 @@ const submissionSchema = new mongoose.Schema(
     feedback: {
       type: String,
       default: ""
+    },
+    aiGrade: {
+      type: String,
+      default: ""
+    },
+    aiFeedback: {
+      type: String,
+      default: ""
+    },
+    aiStatus: {
+      type: String,
+      enum: ["Not Started", "Processing", "Ready", "Failed"],
+      default: "Not Started"
     }
   },
   { timestamps: true }

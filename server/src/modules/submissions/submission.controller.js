@@ -35,6 +35,7 @@ export const upsertSubmission = async (req, res) => {
       assignment: assignmentId,
       student: req.user._id
     },
+    
     {
       assignment: assignmentId,
       student: req.user._id,
@@ -42,7 +43,10 @@ export const upsertSubmission = async (req, res) => {
       submittedAt: new Date(),
       status: "Submitted",
       grade: "",
-      feedback: ""
+      feedback: "",
+      aiGrade: "",
+      aiFeedback: "",
+      aiStatus: "Not Started"
     },
     {
       upsert: true,
@@ -93,6 +97,7 @@ export const getAssignmentSubmissions = async (req, res) => {
     )
 
     return {
+      submissionId: submission ? submission._id : null,
       studentId: student._id,
       studentName: student.name,
       studentEmail: student.email,
@@ -100,6 +105,9 @@ export const getAssignmentSubmissions = async (req, res) => {
       file: submission ? submission.file : null,
       grade: submission ? submission.grade : "",
       feedback: submission ? submission.feedback : "",
+      aiGrade: submission ? submission.aiGrade : "",
+      aiFeedback: submission ? submission.aiFeedback : "",
+      aiStatus: submission ? submission.aiStatus : "Not Started",
       submittedAt: submission ? submission.submittedAt : null
     }
   })

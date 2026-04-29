@@ -44,6 +44,14 @@ function InstructorAssignmentPage() {
     loadData()
   }
 
+  const handleAIGrade = async (submissionId) => {
+    if (!submissionId) return
+  
+    await API.post(`/ai-grader/submission/${submissionId}`)
+  
+    loadData()
+  }
+
   return (
     <div className="assignment-page-shell">
       <PageHeader label="Assignment" title={assignment?.title || "Assignment"} />
@@ -117,6 +125,32 @@ function InstructorAssignmentPage() {
                   disabled={!student.file}
                 />
               </div>
+
+              <div className="auth-field">
+  <label>AI Grader Suggestion</label>
+
+  <p className="content-meta">
+    <strong>Status:</strong> {student.aiStatus || "Not Started"}
+  </p>
+
+  <p className="content-meta">
+    <strong>Suggested Grade:</strong>{" "}
+    {student.aiGrade ? student.aiGrade : "Not available yet"}
+  </p>
+
+  <p className="content-meta">
+    <strong>AI Feedback:</strong>{" "}
+    {student.aiFeedback ? student.aiFeedback : "No AI feedback yet"}
+  </p>
+
+  <button
+    className="create-button"
+    onClick={() => handleAIGrade(student.submissionId)}
+    disabled={!student.file}
+  >
+    Run AI Grader
+  </button>
+</div>
 
               <div className="submission-actions">
                 <button

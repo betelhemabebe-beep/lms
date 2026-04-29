@@ -1,8 +1,8 @@
 import express from "express"
 import cors from "cors"
-import googleCalendarRoutes from "./routes/googleCalendarRoutes.js";
 import authRoutes from "./modules/auth/auth.routes.js"
 import courseRoutes from "./modules/courses/course.routes.js"
+import aiGraderRoutes from "./modules/ai-grader/aiGrader.routes.js";
 import moduleRoutes from "./modules/modules/module.routes.js"
 import moduleContentRoutes from "./modules/module-content/moduleContent.routes.js"
 import assignmentRoutes from "./modules/assignments/assignment.routes.js"
@@ -30,7 +30,7 @@ app.use("/api/grades", gradeRoutes)
 app.use("/api/dashboard", dashboardRoutes)
 app.use("/api/uploads", uploadRoutes)
 app.use("/api/context", contextRoutes)
-app.use("/api/calendar/google", googleCalendarRoutes);
+app.use("/api/ai-grader", aiGraderRoutes)
 
 app.get("/", (req, res) => {
   res.send("API is running")
