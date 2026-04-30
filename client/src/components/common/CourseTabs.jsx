@@ -12,6 +12,13 @@ function CourseTabs({ role, courseId, active }) {
         </Link>
 
         <Link
+          to={`/student/course/${courseId}/discussions`}
+          className={`course-tab ${active === "discussions" ? "active-tab" : ""}`}
+        >
+          Discussions
+        </Link>
+
+        <Link
           to={`/student/course/${courseId}/grades`}
           className={`course-tab ${active === "grades" ? "active-tab" : ""}`}
         >
@@ -35,6 +42,13 @@ function CourseTabs({ role, courseId, active }) {
         className={`course-tab ${active === "assignments" ? "active-tab" : ""}`}
       >
         Assignments
+      </Link>
+
+      <Link
+        to={`/instructor/course/${courseId}/discussions`}
+        className={`course-tab ${active === "discussions" ? "active-tab" : ""}`}
+      >
+        Discussions
       </Link>
     </div>
   )

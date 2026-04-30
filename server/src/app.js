@@ -11,6 +11,7 @@ import gradeRoutes from "./modules/grades/grade.routes.js"
 import dashboardRoutes from "./modules/dashboard/dashboard.routes.js"
 import uploadRoutes from "./modules/uploads/upload.routes.js"
 import contextRoutes from "./modules/context/context.routes.js"
+import discussionRoutes from "./modules/discussions/discussion.routes.js";
 
 const app = express()
 
@@ -31,6 +32,7 @@ app.use("/api/dashboard", dashboardRoutes)
 app.use("/api/uploads", uploadRoutes)
 app.use("/api/context", contextRoutes)
 app.use("/api/ai-grader", aiGraderRoutes)
+app.use("/api/discussions", discussionRoutes);
 
 app.get("/", (req, res) => {
   res.send("API is running")
